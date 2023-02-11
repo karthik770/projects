@@ -1,0 +1,10 @@
+import pandas as pd
+
+def dataframeFiltering(N, A):
+    df = pd.DataFrame(A, columns=['A', 'B'])
+    result = len(df[(df['A'] > 0) or (df['B'].str.contains('e'))])
+    return result
+
+N = 2
+A = [[1, 'des'], [2, 'abc']]
+print(dataframeFiltering(N, A))
