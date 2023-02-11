@@ -1,0 +1,13 @@
+import pandas as pd
+
+def dateSeries(n, s):
+    date = pd.to_datetime(s, format='%Y%m%d')
+    dates = [date + pd.Timedelta(i, unit='D') for i in range(n)]
+    dates = [str(d.date()) for d in dates]
+    return dates
+
+if __name__ == '__main__':
+    n = int(input().strip())
+    s = input().strip()
+    result = dateSeries(n, s)
+    print(*result)
