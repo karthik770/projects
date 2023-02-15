@@ -1,0 +1,10 @@
+import numpy as np
+n = int(input("Enter the number of elements: "))
+arr = []
+for i in range(n):
+    elem = int(input(f"Enter element {i+1}: "))
+    arr.append(elem)
+
+sorted_arr = np.sort(arr)
+
+print("Sorted array:", sorted_arr)
