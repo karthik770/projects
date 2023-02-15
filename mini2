@@ -1,0 +1,31 @@
+google_stock = pd.read_csv("google_stock.csv")
+apple_stock = pd.read_csv("apple_stock.csv")
+amazon_stock = pd.read_csv("amazon_stock.csv")
+
+
+google_adj_close = google_stock["Adj Close"]
+apple_adj_close = apple_stock["Adj Close"]
+amazon_adj_close = amazon_stock["Adj Close"]
+if google_adj_close.isnull().values.any():
+    google_adj_close = google_adj_close.dropna()
+if apple_adj_close.isnull().values.any():
+    apple_adj_close = apple_adj_close.dropna()
+if amazon_adj_close.isnull().values.any():
+    amazon_adj_close = amazon_adj_close.dropna()
+
+
+stock_sum = pd.concat([google_adj_close, apple_adj_close, amazon_adj_close], axis=1)
+stock_sum.columns = ['Google', 'Apple', 'Amazon']
+mean = stock_sum.mean()
+median = stock_sum.median()
+std = stock_sum.std()
+print("Mean:", mean)
+print("\nMedian:", median)
+print("\nStandard Deviation:", std)
+
+
+stock_sum.plot(figsize=(12, 12))
+plt.title(" Prices")
+plt.xlabel("Date")
+plt.ylabel("Price")
+plt.show()
