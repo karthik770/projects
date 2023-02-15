@@ -1,0 +1,24 @@
+from sklearn.manifold import Isomap
+iso = Isomap(n_components=2)
+projection = iso.fit_transform(digits.data)
+
+#Ploting
+
+plt.scatter(projection[:, 0], projection[:, 1], lw=0.1,
+            c=digits.target, cmap=plt.cm.get_cmap('cubehelix', 6))
+plt.colorbar(ticks=range(6), label='digit value')
+plt.clim(-0.5, 5.5)
+
+
+
+
+
+from sklearn.datasets import load_digits
+import matplotlib.pyplot as plt
+digits = load_digits(n_class=6)
+#print(digits)
+
+fig, ax = plt.subplots(8, 8, figsize=(6, 6))
+for i, axi in enumerate(ax.flat): 
+    axi.imshow(digits.images[i], cmap='binary')
+    axi.set(xticks=[], yticks=[])
