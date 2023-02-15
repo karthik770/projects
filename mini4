@@ -1,0 +1,12 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+births = pd.read_csv('births.csv')
+print(births)
+
+births['decade'] = 10 * (births['year'] // 10)
+births.pivot_table('births',index='decade', columns='gender', aggfunc='sum')
+sns.set() 
+births.pivot_table('births', index='year', columns='gender', aggfunc='sum').plot()
